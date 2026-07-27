@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Form</title>
+    <style>
+        * {
+            margin: 0rem;
+            padding: 0rem;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: rgb(58, 58, 58);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 100px;
+            padding-bottom: 40px;
+            background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4d5bb42d-caec-42a9-818e-dcc4b24bb273/df6zupw-8d7110bb-8667-4275-8a35-7aac54847ffa.jpg/v1/fill/w_1280,h_800,q_75,strp/mac_os_wallpaper_by_egeyoruk_df6zupw-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9ODAwIiwicGF0aCI6Ii9mLzRkNWJiNDJkLWNhZWMtNDJhOS04MThlLWRjYzRiMjRiYjI3My9kZjZ6dXB3LThkNzExMGJiLTg2NjctNDI3NS04YTM1LTdhYWM1NDg0N2ZmYS5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.oxg0zRZTDFh_uJ6fBAHox3EgBcofqnmXD7WTh3imNsI);
+            background-size: cover;
+            background-position: center;
+        }
+
+        #form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem 2rem;
+            backdrop-filter: blur(20px);
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 14px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.555);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            z-index: 10;
+            color: white;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        label {
+            font-size: 0.9rem;
+            margin-bottom: 2px;
+            display: inline-block;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            backdrop-filter: blur(20px);
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 14px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.555);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: white;
+            padding: 6px 0.75rem;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        input:focus {
+            border-color: white;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        button {
+            border: none;
+            border-radius: 10px;
+            padding: 6px 16px;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        button[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        button[type="reset"] {
+            background-color: #999;
+            color: white;
+        }
+
+        #error {
+            color: #ff6b6b;
+            font-size: 0.8rem;
+            min-height: 1rem;
+        }
+
+        #info {
+            margin-top: 20px;
+            color: white;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 14px;
+            padding: 1rem 1.5rem;
+            display: none;
+        }
+
+        #info.visible {
+            display: block;
+        }
+
+        #info p {
+            margin: 4px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="form">
+        <form id="contactForm">
+            <div class="field">
+                <label for="name">Name : </label>
+                <input id="name" type="text" placeholder="Your name" required>
+            </div>
+            <div class="field">
+                <label for="email">Email : </label>
+                <input id="email" type="email" placeholder="you@example.com" required>
+            </div>
+            <div class="field">
+                <label for="phone">Phone : </label>
+                <input id="phone" type="tel" placeholder="e.g. 9876543210" required>
+            </div>
+            <div id="error"></div>
+            <div class="buttons">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+    </div>
+
+    <section id="info"></section>
+
+    <script>
+        const form = document.getElementById("contactForm");
+        const errorBox = document.getElementById("error");
+        const info = document.getElementById("info");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            errorBox.textContent = "";
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+
+            if (!name || !email || !phone) {
+                errorBox.textContent = "Please fill in all fields.";
+                return;
+            }
+
+            if (!/^[0-9]{10}$/.test(phone)) {
+                errorBox.textContent = "Phone number must be 10 digits.";
+                return;
+            }
+
+            info.innerHTML = `
+                <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+                <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+                <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
+            `;
+            info.classList.add("visible");
+        });
+
+        form.addEventListener("reset", function () {
+            errorBox.textContent = "";
+            info.classList.remove("visible");
+            info.innerHTML = "";
+        });
+
+        function escapeHtml(str) {
+            const div = document.createElement("div");
+            div.textContent = str;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+
+</html>

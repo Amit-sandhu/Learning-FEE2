@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #87CEFA, #63B8FF);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+nav {
+    position: absolute;
+    top: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    background-color: #3f9eec;
+    margin: 0px;
+    padding: 20px;
+    width: 100%;
+    height: 80px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.menu {
+    display: flex;
+    gap: 50px;
+}
+
+.menu a {
+    font-size: 50px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.bell {
+    position: relative;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: rgb(255, 0, 0);
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+}
+
+.circle1,
+.circle2 {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(5px);
+}
+
+.circle1 {
+    width: 180px;
+    height: 180px;
+    background: pink;
+    left: 120px;
+    top: 120px;
+}
+
+.circle2 {
+    width: 120px;
+    height: 120px;
+    background: #ffffcc;
+    right: 120px;
+    bottom: 100px;
+}
+
+.login {
+    width: 320px;
+    padding: 30px;
+    text-align: center;
+
+    background: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255, 255, 255, .3);
+
+    border-radius: 15px;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .2);
+}
+
+.login h2 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.login p {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+
+    border: none;
+    border-radius: 5px;
+
+    background: #FFD966;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+a {
+    display: block;
+    margin-top: 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+#chat{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+#chat:hover{
+    background-color: rgba(95, 93, 93, 0.1);
+    border-radius: 50%;
+}
+
+#eyelogo{
+    position:absolute;
+    right:10px;
+    top:17px;
+    cursor:pointer;
+}
+
+#warning{
+    position:absolute;
+    right:25px;
+    top:-30px;
+    background:#666;
+    color:white;
+    padding:5px 10px;
+    border-radius:5px;
+    white-space:nowrap;
+
+    visibility:hidden;
+    opacity:0;
+    transition:.2s;
+}
+
+#eyelogo:hover #warning{
+    visibility:visible;
+    opacity:1;
+}

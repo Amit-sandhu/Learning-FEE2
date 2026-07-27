@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toggle CSS</title>
+
+<style id="main">
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    background:#111;
+    position:relative;
+}
+
+/* Mac-like blobs */
+body::before,
+body::after{
+    content:"";
+    position:absolute;
+    width:450px;
+    height:450px;
+    border-radius:50%;
+    filter:blur(90px);
+    opacity:.8;
+}
+
+body::before{
+    background:#5ac8fa;
+    top:-150px;
+    left:-120px;
+}
+
+body::after{
+    background:#ff5f57;
+    bottom:-150px;
+    right:-120px;
+}
+
+.card{
+    width:360px;
+    padding:35px;
+    border-radius:22px;
+    backdrop-filter:blur(20px);
+    background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.2);
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    z-index:1;
+}
+
+h2{
+    color:white;
+    text-align:center;
+}
+
+input{
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    outline:none;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+}
+
+.submit{
+    background:#007aff;
+    color:white;
+    padding:12px;
+    border-radius:10px;
+}
+</style>
+
+<style id="extra">
+.image{
+    position:absolute;
+    right:80px;
+    top:50%;
+    transform:translateY(-50%);
+    width:350px;
+    z-index:2;
+}
+
+.image img{
+    width:100%;
+}
+
+#toggle{
+    position:fixed;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+    padding:20px 80px;
+    font-size:24px;
+    font-weight:bold;
+    border:none;
+    border-radius:18px;
+    background:#ff3b30;
+    color:white;
+    cursor:pointer;
+    box-shadow:0 12px 30px rgba(0,0,0,.35);
+    z-index:10;
+}
+</style>
+
+</head>
+<body>
+
+<div class="card">
+    <h2>Login</h2>
+
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+
+    <button class="submit">Login</button>
+</div>
+
+<div class="image">
+    <img id="picture" src="img1.png" alt="">
+</div>
+
+<button id="toggle">Click Me</button>
+
+<script>
+const button = document.getElementById("toggle");
+const mainStyle = document.getElementById("main");
+const picture = document.getElementById("picture");
+
+const originalCSS = mainStyle.innerHTML;
+
+let enabled = true;
+
+button.addEventListener("click", function () {
+
+    enabled = !enabled;
+
+    if (enabled) {
+        mainStyle.innerHTML = originalCSS;
+        picture.src = "img1.png";
+    } else {
+        mainStyle.innerHTML = "";
+        picture.src = "img2.png";
+    }
+
+});
+</script>
+
+</body>
+</html>
