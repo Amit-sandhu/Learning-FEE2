@@ -1,0 +1,91 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    background:#111;
+    position:relative;
+}
+
+/* Mac-like blobs */
+body::before,
+body::after{
+    content:"";
+    position:absolute;
+    width:450px;
+    height:450px;
+    border-radius:50%;
+    filter:blur(90px);
+    opacity:.8;
+}
+
+body::before{
+    background:#5ac8fa;
+    top:-150px;
+    left:-120px;
+}
+
+body::after{
+    background:#ff5f57;
+    bottom:-150px;
+    right:-120px;
+}
+
+.card{
+    width:360px;
+    padding:35px;
+    border-radius:22px;
+    backdrop-filter:blur(20px);
+    background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.2);
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    z-index:1;
+}
+
+h2{
+    color:white;
+    text-align:center;
+}
+
+input{
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    outline:none;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+}
+
+.submit{
+    background:#007aff;
+    color:white;
+    padding:12px;
+    border-radius:10px;
+}
+
+#toggle{
+    position:fixed;
+    bottom:35px;
+    left:50%;
+    transform:translateX(-50%);
+    padding:18px 60px;
+    font-size:22px;
+    font-weight:bold;
+    border-radius:16px;
+    background:#ff3b30;
+    color:white;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
