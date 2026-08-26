@@ -5,7 +5,11 @@ const taskList = document.getElementById("taskList");
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 function saveTasks() {
+<<<<<<< HEAD
     localStorage.getItem("tasks", JSON.stringify(tasks));
+=======
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+>>>>>>> origin/main
 }
 
 function renderTasks() {
