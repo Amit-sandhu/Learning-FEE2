@@ -1,13 +1,13 @@
-localStorage.setItem("name", "Divyana");
-localStorage.setItem("lastname", "Garg");
+    localStorage.setItem("name", "Amit");
+localStorage.setItem("lastname", "Sandhu");
 
 const name = localStorage.getItem("lastname");
 console.log(name);
 console.log(typeof(name));
 
 const details = {
-    name: "Divyana",
-    lastname: "Garg",
+    name: "Amit",
+    lastname: "Sandhu",
 }
 
 // localStorage.setItem("d", details);
