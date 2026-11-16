@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import InfiniteScrolling from './infiniteScrolling';
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -71,6 +72,8 @@ function App() {
       </div>
       <br></br>
       <span id="page">Page: {(skip / limit) + 1}</span>
+      <hr />
+      <InfiniteScrolling />
     </div>
   );
 }
